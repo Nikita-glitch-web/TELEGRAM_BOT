@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const weatherSchema = new Schema({
     city: {
         type: String,
-        required: true
+        required: true,
     },
 },
 { timestamps: true }
