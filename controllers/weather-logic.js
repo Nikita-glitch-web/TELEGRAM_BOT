@@ -10,38 +10,31 @@ const createRequestCityUrl = (cityName, units = "metric") => {
 
 
 exports.requsetToServer = async (req, res, next) => {
-    //   const errors = validationResult(req);
-    //   if (!errors.isEmpty()) {
-    //     const error = new Error("Validation failed.");
-    //     error.statusCode = 422;
-    //     error.data = errors.array();
-    //     throw error;
-    //   }
-    //   res.createRequestCityUrl();
-    //   const city = req.body.city;    
-    //     try {
-    //       const result = await city.save();
-    //       res
-    //         .status(201)
-    //         .json({ message: "City finded", cityId: result._id });
-    //     } catch (err) {
-    //       if (!err.statusCode) {
-    //         err.statusCode = 500;
-    //       }
-    //       next(err);
-    //     }
-   
-   try {
-     //fetch(getCity(), {method: "GET"});
-      let getCity = req.createRequestCityUrl();
-      await res.getCity();
-   } catch (err) {
-     if (!err.statusCode) {
-       err.statusCode = 500;
-     }
-     next(err);
-   }
+    const resCity = await fetch(createRequestCityUrl());
+    console.log(resCity);
+    requsetToServerJSON = async () => {
+        const cities = await resCity().json();
+        return cities;
+    };
+    this.requsetToServerJSON().then((cities) => {
+        cities;
+    })
 }
+
 
 //тобі треба брати це city і робити запит на opwnweather через await чекати респонса і потім результат відправляти вже клієнту який робив запит
 
+// async function fetchMovies() {
+//   const response = await fetch("/movies");
+//   // ждем выполнения запроса
+//   console.log(response);
+// }
+
+// async function fetchMoviesJSON() {
+//   const response = await fetch("/movies");
+//   const movies = await response.json();
+//   return movies;
+// }
+// fetchMoviesJSON().then((movies) => {
+//   movies; // полученный список фильмов
+// });
