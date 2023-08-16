@@ -5,13 +5,12 @@
 const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
-const fetch = require("node-fetch");
 const weatherRoutes = require('./routes/weather-routes');
 const weatherControllers = require("./controllers/weather-logic");
 
 
 const app = express();
-app.use(fetch)
+
 app.use((error, req, res, next) => {
   console.log(error);
   const status = error.statusCode || 500;
@@ -20,8 +19,10 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message: message, data: data });
 });
 
-
+// http://localhost:9000/weather/paris?units=imperial //search params
 app.get("/weather/:city", weatherControllers.requsetToServer);
+app.get("/weather/:city/week", weatherControllers.requsetToServer);// на тиждень
+// app.get("/products/:id/category/:catId", weatherControllers.requsetToServer);
 
 app.get('/health-check', (req, res, next) => {
   console.log('HEALTH CHECK');
