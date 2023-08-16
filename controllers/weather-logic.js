@@ -1,4 +1,3 @@
-const { JSON } = require("mysql2/lib/constants/types");
 
 const API_URL = `https://api.openweathermap.org/data/2.5/weather?q={cityName}&appid={06c5f199747cce8b744a02e23013298f}`;
 
