@@ -17,4 +17,10 @@ exports.requsetToServer = async (req, res, next) => {
     maxTemperature: `${data.main.temp_max} C`
   }
   res.send(mappedData)
+  next();
 };
+
+exports.weekWeatherRes = async (req, res, next) => {
+    const weekWeather = req.params.week;
+    
+}
