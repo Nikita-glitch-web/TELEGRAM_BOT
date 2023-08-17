@@ -22,5 +22,5 @@ exports.requsetToServer = async (req, res, next) => {
 
 exports.weekWeatherRes = async (req, res, next) => {
     const week = req.params.week;
-    const response = await fetch(createRequestCityUrl(week));
+    const response = await fetch(createRequestCityUrl(week)); 
 }
