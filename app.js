@@ -21,7 +21,7 @@ app.use((error, req, res, next) => {
 
 // http://localhost:9000/weather/paris?units=imperial //search params
 app.get("/weather/:city", weatherControllers.requsetToServer);
-app.get("/weather/:city/week", weatherControllers.weekWeatherRes);// на тиждень
+app.get("/weather/:city/week", weatherControllers.cityCoordinateRes);// на тиждень
 // app.get("/products/:id/category/:catId", weatherControllers.requsetToServer);
 
 app.get('/health-check', (req, res, next) => {
