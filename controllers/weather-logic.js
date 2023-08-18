@@ -15,6 +15,7 @@ const createWeekRequestUrl = (lat, lon) => {
     return `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${lon}&cnt={06c5f199747cce8b744a02e23013298f}`
 }
 
+
 exports.requsetToServer = async (req, res, next) => {
   const cityName = req.params.city
   const response = await fetch(createRequestCityUrl(cityName));
@@ -32,11 +33,12 @@ exports.requsetToServer = async (req, res, next) => {
 
 exports.weekWeatherRes = async (req, res, next) => {
     const city = req.params.city;
-    const weekResponse = await fetch(createWeekRequestUrl(city));
+    const weekResponse = await fetch(createRequestCityUrl(city));
     const weekData = await weekResponse.json();
     const cityMappedData = {
-        lat: `${data.coord.lat}`,
-        lon: `${data.coord.lon}`
+        lat: `${weekData.coord.lat}`,
+        lon: `${weekData.coord.lon}`,
+        cityName: `${weekData.name}`
     }
 
     // const weekMappedData = {
